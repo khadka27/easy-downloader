@@ -1,16 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
@@ -22,29 +14,22 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <Button variant="outline" size="icon" className="w-9 h-9" />;
+    return (
+      <button className="w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-600"></button>
+    );
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="w-9 h-9">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-600 flex items-center justify-center bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+      aria-label="Toggle theme"
+    >
+      {theme === "dark" ? (
+        <FaSun className="h-4 w-4" />
+      ) : (
+        <FaMoon className="h-4 w-4" />
+      )}
+    </button>
   );
 }
