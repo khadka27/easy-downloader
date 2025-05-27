@@ -13,6 +13,10 @@ export type Unit = "ms" | "s" | "m" | "h" | "d";
 export type Duration = `${number} ${Unit}` | `${number}${Unit}`;
 
 export type VideoInfo = {
+  thumbnailUrl: any;
+  title: string;
+  author: any;
+  duration: any;
   filename: string;
   width: string;
   height: string;
