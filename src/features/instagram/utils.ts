@@ -168,6 +168,10 @@ export const formatGraphqlJson = (data: MediaData) => {
     width,
     height,
     videoUrl,
+    thumbnailUrl: undefined,
+    title: "",
+    author: undefined,
+    duration: undefined
   };
 
   return videoJson;
@@ -196,6 +200,10 @@ export const formatPageJson = (postHtml: CheerioAPI) => {
     width,
     height,
     videoUrl,
+    thumbnailUrl: undefined,
+    title: "",
+    author: undefined,
+    duration: undefined
   };
 
   return videoJson;
