@@ -1,100 +1,41 @@
-// File: app/layout.tsx
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Metadata } from "next";
+import { DM_Sans as FontSans } from "next/font/google";
+
+import { Navbar, Footer } from "@/components/layout";
+import { AdSense } from "@/components/adsense/AdSense";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ReactQueryProvider } from "@/components/providers/react-query-provider";
+
+import { cn } from "@/lib/utils";
+
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontSans = FontSans({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "MediaWave - Social Media Content Downloader",
-  description:
-    "Download photos and videos from Instagram, Facebook, Twitter, TikTok, and YouTube with just a URL paste.",
-  keywords:
-    "social media downloader, instagram downloader, facebook downloader, twitter downloader, tiktok downloader, youtube downloader, video downloader, image downloader",
-  authors: [{ name: "MediaWave Team" }],
-  creator: "MediaWave",
-  publisher: "MediaWave",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    title: "MediaWave - Download Social Media Content",
-    description:
-      "Easily download photos and videos from Instagram, Facebook, Twitter, TikTok, and YouTube.",
-    siteName: "MediaWave",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "MediaWave - Social Media Content Downloader",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MediaWave - Social Media Content Downloader",
-    description:
-      "Download photos and videos from major social platforms with a single click",
-    images: ["/twitter-image.png"],
-    creator: "@mediawave",
-  },
-  manifest: "/manifest.json",
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#222222" },
-  ],
-  category: "technology",
+  title: "Instagram Video Downloader",
+  description: "Download Instagram Videos",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <AdSense pId="9504654793147997"/>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          fontSans.variable,
+          "overflow-x-hidden bg-background font-sans antialiased"
+        )}
       >
         <ThemeProvider
           attribute="class"
@@ -102,26 +43,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              className: "dark:bg-gray-800 dark:text-white",
-              style: {
-                border: "1px solid",
-                borderColor: "var(--border)",
-                padding: "16px",
-                color: "var(--foreground)",
-                background: "var(--background)",
-              },
-              success: {
-                iconTheme: {
-                  primary: "#9333ea",
-                  secondary: "#ffffff",
-                },
-              },
-            }}
-          />
+          <ReactQueryProvider>
+            <Navbar />
+            <main className="relative h-[calc(100vh-6rem)] overflow-y-auto px-2 sm:px-4">
+              {children}
+            </main>
+            <Footer />
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>

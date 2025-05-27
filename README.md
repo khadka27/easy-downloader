@@ -1,159 +1,94 @@
-# MediaWave 🌊
+# Instagram Videos Downloader
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://media-waves.vercel.app)
-[![Next.js](https://img.shields.io/badge/built%20with-Next.js-purple.svg)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+A simple website/API for downloading Instagram videos, built with Next.js. It works seamlessly and allows you to download videos with no hassle.
 
-**MediaWave** is a powerful, user-friendly web application that allows you to download images and videos from popular social media platforms including Instagram, Facebook, Twitter, TikTok, and YouTube.
 
-📱 **Live Demo**: [media-waves.vercel.app](https://media-waves.vercel.app)
+## Description
 
-![MediaWave Screenshot](public/og-image.png)
+This website allows you to easily download Instagram videos in MP4 format. Simply paste the URL of any public Instagram post, and you'll receive the video file. There's also an API that you can integrate into your own applications to download Instagram videos programmatically. The API returns JSON responses with the video URL and other metadata.
 
-## ✨ Features
+_Note: Instagram Stories aren't supported._
 
-- **Multi-Platform Support**: Download from Instagram, Facebook, Twitter, TikTok, and YouTube
-- **One-Click Downloads**: Simply paste a URL and click download
-- **Media Preview**: View images and videos before downloading
-- **Responsive Design**: Works seamlessly on mobile, tablet, and desktop
-- **Dark Mode Support**: Toggle between light and dark themes
-- **PWA Ready**: Install as a standalone app on your device
-- **No Watermarks**: Clean, original quality downloads
-- **Fast Processing**: Optimized for speed and reliability
+You can preview and try the website live on Vercel here: [instagram-reels-downloader-tau.vercel.app](https://instagram-reels-downloader-tau.vercel.app/)
 
-## 🚀 Tech Stack
+## Getting Started
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Fonts**: [Geist](https://vercel.com/font) (Sans and Mono)
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
-- **HTTP Client**: [Axios](https://axios-http.com/)
-- **HTML Parsing**: [Cheerio](https://cheerio.js.org/)
-- **Loading States**: [React Spinners](https://www.davidhu.io/react-spinners/)
-- **Hosting**: [Vercel](https://vercel.com/)
-
-## 🛠️ Installation
-
-1. **Clone the repository**
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/khadka27/easy-downloader.git
-cd easy-downloader
+git clone https://github.com/riad-azz/Instagram-reels-downloader.git
 ```
 
-2. **Install dependencies**
+### 2. Install dependencies
 
 ```bash
+cd Instagram-reels-downloader
 npm install
-# or
-yarn install
-# or
-pnpm install
 ```
 
-3. **Start the development server**
+### 3. Start the server
+
+For development:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-4. **Open your browser**
+For production (build and start):
 
-Navigate to [http://localhost:3000](http://localhost:3000) to see the app.
-
-## ⚙️ Environment Variables
-
-Create a `.env.local` file in the root directory with the following variables:
-
-```env
-# Required for production deployment
-NEXT_PUBLIC_SITE_URL=https://media-waves.vercel.app
+```bash
+npm run build
+npm run start
 ```
 
-## 🧩 Project Structure
+### Endpoint: `/api/video?postUrl={POST_URL}`
 
-```
-mediawave/
-├── app/
-│   ├── api/
-│   │   ├── download/
-│   │   │   └── route.ts   # API for extracting media URLs
-│   │   └── fetch-media/
-│   │       └── route.ts   # API for fetching and serving media
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout with metadata
-│   └── page.tsx           # Main app page
-├── public/                # Static assets
-│   ├── manifest.json      # PWA manifest
-│   ├── robots.txt         # SEO robots file
-│   ├── sitemap.xml        # SEO sitemap
-│   └── [icons]            # Various app icons
-└── [config files]         # Next.js, TypeScript, and package configs
+Parameters:
+
+- `postUrl` : Instagram post or reel link **(required)**.
+
+#### GET Request example
+
+```bash
+curl -i "http://localhost:3000/api/video?postUrl=https://www.instagram.com/reel/DCUBzY0yiKK/"
 ```
 
-## 🔍 How It Works
+#### API Response
 
-1. The user pastes a social media URL into the input field
-2. The app sends the URL to the `/api/download` endpoint
-3. The endpoint uses platform-specific extraction to find the media URL
-4. The media is displayed for preview in the UI
-5. When the user clicks "Save to device", the app fetches the media through `/api/fetch-media` endpoint
-6. The media is downloaded directly to the user's device
+```json
+{
+  "status": "success",
+  "data": {
+    "filename": "ig-downloader-1712666263.mp4",
+    "width": "640",
+    "height": "640",
+    "videoUrl": "https://scontent.cdninstagram.com/o1/v/t16/f1/m84/E84E5DFC48EA8...etc"
+  }
+}
+```
 
-## 📱 Progressive Web App
+## Rate Limiter - Upstash
 
-MediaWave can be installed as a Progressive Web App on supported devices:
+To optimize API performance and reduce the load, rate limiting has been implemented using Upstash. This limits the number of requests to the API within a specific time frame to avoid service disruptions.
 
-1. Visit [media-waves.vercel.app](https://media-waves.vercel.app) in a supported browser
-2. Look for the "Add to Home Screen" option in your browser menu
-3. Follow the prompts to install the app
+To enable rate limiting, follow these steps:
 
-## 🌙 Dark Mode
+1. Create an account on [upstash.com](https://upstash.com/).
+2. Create a new Redis database.
+3. Click on the newly created database.
+4. Under "REST API", click on `.env` and copy the provided variables.
+5. Create a `.env.local` file in the root directory.
+6. Paste the variables into the `.env.local` file and add the following line:
+   ```env
+   USE_UPSTASH="true"
+   UPSTASH_REDIS_REST_URL="YOUR-UPSTASH-URL"
+   UPSTASH_REDIS_REST_TOKEN="YOUR-UPSTASH-TOKEN"
+   ```
 
-MediaWave automatically adapts to your system's color scheme preference, but you can also manually toggle between light and dark modes using the theme switcher in the UI.
+All rate-limit configurations can be found in `src/features/ratelimit/constants.ts`.
 
-## ⚠️ Limitations
+If you want to change the identifier (default is IP), you can modify it in `src/middleware.ts`.
 
-- The app relies on meta tags to extract content, which might not work for all posts
-- Some platforms may block or limit scraping attempts
-- YouTube extraction provides thumbnails only, not full videos
-- Direct video downloads may not work on all browsers due to platform restrictions
+## License
 
-## 🔜 Roadmap
-
-- [ ] Add support for more platforms (Reddit, Pinterest, etc.)
-- [ ] Implement server-side extraction for more reliable downloads
-- [ ] Add batch download functionality
-- [ ] Create browser extension version
-- [ ] Implement user accounts for download history
-- [ ] Add analytics for download statistics
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgements
-
-- [Next.js](https://nextjs.org/) for the amazing React framework
-- [Vercel](https://vercel.com/) for hosting the application
-- All the open-source libraries that made this project possible
-
----
-
-Made with ❤️ by [Abishek Khadka]
+This project is licensed under the **Apache License 2.0**. See the LICENSE.md file for details.
