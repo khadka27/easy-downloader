@@ -1,5 +1,7 @@
-import { Platform, VideoInfo } from "@/types";
-import { getVideoInfoFromUrl as getInstagramVideo } from "@/features/instagram";
+import { VideoInfo } from "@/types";
+import { getVideoInfo as getInstagramVideo } from "@/features/instagram";
+
+type Platform = "instagram" | "facebook" | "tiktok";
 
 export async function getVideoPreview(url: string): Promise<VideoInfo> {
   const platform = detectPlatform(url);
