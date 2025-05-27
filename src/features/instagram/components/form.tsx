@@ -83,7 +83,9 @@ export function InstagramVideoForm() {
       console.log("getting video info", postUrl);
       const videoInfo = await getVideoInfo({ postUrl });
 
-      const { filename, videoUrl, title = "Instagram Video" } = videoInfo;
+      const { filename, videoUrl } = videoInfo;
+      // Define title separately since it's not in the VideoInfo type
+      const title = "Instagram Video";
 
       // Use null as default value for thumbnail since it's not in the VideoInfo type
       const thumbnail = null;
