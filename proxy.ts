@@ -7,11 +7,11 @@ import { UPSTASH_CONFIGS } from "@/features/rate-limiter/constants";
 
 export async function middleware(request: NextRequest) {
   const requestPath = request.nextUrl.pathname;
-  const country = request.geo?.country ?? "Country";
+  const country = (request as any).geo?.country ?? "Country";
 
   const clientIp = getIpFromRequest(request);
-  console.log("country:",country);
-  console.log("clientIp:",clientIp);
+  console.log("country:", country);
+  console.log("clientIp:", clientIp);
 
   // Log request info
   console.log(`${request.method} ${clientIp} (${country}) -> ${requestPath}`);

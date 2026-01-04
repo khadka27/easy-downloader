@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config, { isServer }) => {
+  webpack: (config:any, { isServer }:any) => {
     // Handle undici compatibility issues only for client-side
     if (!isServer) {
       config.resolve.fallback = {
