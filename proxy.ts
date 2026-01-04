@@ -5,7 +5,7 @@ import { getIpFromRequest } from "@/lib/http";
 import { isRatelimited } from "@/features/rate-limiter/utils";
 import { UPSTASH_CONFIGS } from "@/features/rate-limiter/constants";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const requestPath = request.nextUrl.pathname;
   const country = (request as any).geo?.country ?? "Country";
 
