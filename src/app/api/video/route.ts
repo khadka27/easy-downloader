@@ -45,7 +45,7 @@ async function getMultiPlatformVideoInfo(
 
     case "youtube":
       // Import ytdl-core dynamically to avoid SSR issues
-      const ytdl = (await import("ytdl-core")).default;
+      const ytdl = (await import("@distube/ytdl-core")).default;
 
       if (!ytdl.validateURL(url)) {
         throw new HTTPError("Invalid YouTube URL", 400);
