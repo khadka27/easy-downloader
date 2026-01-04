@@ -80,20 +80,26 @@ export const metadata: Metadata = {
   // Recommended: Use a template for titles to ensure consistency
   // Individual pages can then set metadata.title and it will be appended/prepended
   title: {
-    default: "Instagram Downloader - Download Reels, Videos & Stories",
-    template: "%s | Instagram Downloader", // Example: "About Us | Instagram Downloader"
+    default: "Social Media Downloader - Download Videos from Instagram, YouTube, TikTok, Facebook & Twitter",
+    template: "%s | Social Media Downloader", // Example: "About Us | Social Media Downloader"
   },
   description:
-    "Easily download Instagram videos, reels, stories, and IGTV content in high quality. Fast, free, and simple to use Instagram downloader tool. No login required.",
+    "Download videos from Instagram, YouTube, TikTok, Facebook, and Twitter in high quality. Fast, free, and simple to use social media downloader tool. No login required.",
   keywords: [
+    "social media downloader",
     "instagram downloader",
+    "youtube downloader",
+    "tiktok downloader",
+    "facebook downloader",
+    "twitter downloader",
     "download instagram videos",
+    "download youtube videos",
+    "download tiktok videos",
     "instagram reels downloader",
-    "instagram story downloader",
-    "save instagram videos",
-    "ig downloader",
-    "instagram video saver",
-    "free instagram downloader",
+    "youtube shorts downloader",
+    "free video downloader",
+    "video saver",
+    "social media video downloader",
   ],
   authors: [
     {
@@ -112,17 +118,17 @@ export const metadata: Metadata = {
   },
   // Open Graph (for social sharing - Facebook, LinkedIn, etc.)
   openGraph: {
-    title: "Instagram Downloader - Download Reels, Videos & Stories",
+    title: "Social Media Downloader - Download Videos from Instagram, YouTube, TikTok, Facebook & Twitter",
     description:
-      "The easiest way to download Instagram videos, reels, and stories online. Free, fast, and high quality.",
+      "The easiest way to download videos from Instagram, YouTube, TikTok, Facebook, and Twitter online. Free, fast, and high quality.",
     url: "https://instagram-reels-downloader-tau.vercel.app", // Replace with your site's canonical URL
-    siteName: "Instagram Downloader", // Replace with your site name
+    siteName: "Social Media Downloader", // Replace with your site name
     images: [
       {
         url: "https://instagram-reels-downloader-tau.vercel.app/og-image.png", // Replace with your default OG image URL (e.g., 1200x630px)
         width: 1200,
         height: 630,
-        alt: "Instagram Downloader - Download Instagram Content",
+        alt: "Social Media Downloader - Download Videos from Multiple Platforms",
       },
     ],
     locale: "en_US",
@@ -131,9 +137,9 @@ export const metadata: Metadata = {
   // Twitter Card (for Twitter sharing)
   twitter: {
     card: "summary_large_image",
-    title: "Instagram Downloader - Fast & Free IG Video Saver",
+    title: "Social Media Downloader - Fast & Free Video Saver",
     description:
-      "Download your favorite Instagram videos, reels, and stories quickly and easily with our free online tool.",
+      "Download your favorite videos from Instagram, YouTube, TikTok, Facebook, and Twitter quickly and easily with our free online tool.",
     // site: "@yourtwitterhandle", // Optional: Your Twitter handle
     // creator: "@yourtwitterhandle", // Optional: Content creator's Twitter handle
     images: [

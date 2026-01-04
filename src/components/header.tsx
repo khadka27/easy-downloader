@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Instagram, Moon, Sun, Menu, X } from "lucide-react";
+import { Sparkles, Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
@@ -52,11 +52,11 @@ export function Header() {
           className="flex items-center gap-2"
           onClick={() => setIsMobileMenuOpen(false)}
         >
-          <div className="rounded-md bg-gradient-to-r from-purple-500 to-pink-500 p-1.5">
-            <Instagram className="h-6 w-6 text-white" />
+          <div className="rounded-md bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 p-1.5">
+            <Sparkles className="h-6 w-6 text-white" />
           </div>
           <span className="hidden text-lg font-bold sm:inline-block">
-            Instagram Downloader
+            Social Media Downloader
           </span>
         </Link>
 
@@ -105,10 +105,10 @@ export function Header() {
                       className="flex items-center gap-2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <div className="rounded-md bg-gradient-to-r from-purple-500 to-pink-500 p-1.5">
-                        <Instagram className="h-6 w-6 text-white" />
+                      <div className="rounded-md bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 p-1.5">
+                        <Sparkles className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-lg font-bold">IG Downloader</span>
+                      <span className="text-lg font-bold">Social Downloader</span>
                     </Link>
                     <SheetClose asChild>
                       <Button

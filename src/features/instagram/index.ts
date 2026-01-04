@@ -1,5 +1,3 @@
-import { load } from "cheerio";
-
 import {
   getPostPageHTML,
   getPostGraphqlData,
@@ -14,6 +12,8 @@ import { formatGraphqlJson, formatPageJson, getPostIdFromUrl } from "./utils";
 const getVideoJsonFromHTML = async (postId: string) => {
   const data = await getPostPageHTML({ postId });
 
+  // Dynamic import of cheerio to avoid client-side bundling
+  const { load } = await import("cheerio");
   const postHtml = load(data);
   const videoElement = postHtml("meta[property='og:video']");
 

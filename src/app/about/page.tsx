@@ -1,23 +1,36 @@
 import type { Metadata } from "next";
-import { Users, Target, Zap, ShieldCheck, Heart, Info } from "lucide-react";
+import {
+  Users,
+  Target,
+  Zap,
+  ShieldCheck,
+  Heart,
+  Info,
+  Sparkles,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "About Us - Instagram Downloader",
+  title: "About Us - Social Media Downloader",
   description:
-    "Learn more about Instagram Downloader, our mission to provide a fast, free, and easy way to download Instagram videos, reels, and stories. Discover our commitment to user experience and privacy.",
+    "Learn more about Social Media Downloader, our mission to provide a fast, free, and easy way to download videos from Instagram, YouTube, TikTok, Facebook, and Twitter. Discover our commitment to user experience and privacy.",
   keywords: [
-    "about instagram downloader",
+    "about social media downloader",
     "our mission",
-    "instagram tool",
+    "video downloader",
     "free video downloader",
-    "ig content saver",
+    "social media content saver",
+    "instagram downloader",
+    "youtube downloader",
+    "tiktok downloader",
+    "facebook downloader",
+    "twitter downloader",
   ],
   openGraph: {
-    title: "About Instagram Downloader - Your Free IG Content Saver",
+    title: "About Social Media Downloader - Your Free Video Saver",
     description:
-      "Discover the story behind Instagram Downloader and our dedication to a seamless user experience.",
+      "Discover the story behind Social Media Downloader and our dedication to a seamless user experience across multiple platforms.",
     url: "https://instagram-reels-downloader-tau.vercel.app/about", // Replace with your actual URL
     type: "article",
     images: [
@@ -25,14 +38,15 @@ export const metadata: Metadata = {
         url: "/placeholder.svg?width=1200&height=630", // Replace with your actual OG image
         width: 1200,
         height: 630,
-        alt: "About Instagram Downloader",
+        alt: "About Social Media Downloader",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us - Instagram Downloader",
-    description: "Learn about our free tool for downloading Instagram content.",
+    title: "About Us - Social Media Downloader",
+    description:
+      "Learn about our free tool for downloading videos from multiple social media platforms.",
     images: ["/placeholder.svg?width=1200&height=630"], // Replace with your actual Twitter image
   },
 };
@@ -41,12 +55,15 @@ const AboutPage = () => {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8 sm:py-12">
       <header className="mb-8 text-center sm:mb-12">
-        <Users className="mx-auto mb-4 h-16 w-16 text-purple-600 dark:text-purple-400" />
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500">
+          <Sparkles className="h-8 w-8 text-white" />
+        </div>
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl">
-          About Instagram Downloader
+          About Social Media Downloader
         </h1>
         <p className="mt-3 text-lg text-gray-600 dark:text-gray-400 sm:mt-4">
-          Your simple, fast, and free solution for saving Instagram content.
+          Your simple, fast, and free solution for saving videos from multiple
+          social media platforms.
         </p>
       </header>
 
@@ -55,7 +72,8 @@ const AboutPage = () => {
           <p className="mb-6 rounded-md border-l-4 border-purple-500 bg-purple-50 p-4 text-purple-800 dark:bg-purple-900/20 dark:text-purple-200">
             <Info className="mr-2 inline-block h-5 w-5 align-text-bottom" />
             Welcome! We're passionate about making it easy for you to save and
-            enjoy your favorite Instagram moments.
+            enjoy your favorite videos from Instagram, YouTube, TikTok,
+            Facebook, and Twitter.
           </p>
 
           <section>
@@ -64,11 +82,12 @@ const AboutPage = () => {
               Our Mission
             </h2>
             <p>
-              At Instagram Downloader, our mission is straightforward: to
+              At Social Media Downloader, our mission is straightforward: to
               provide a user-friendly, reliable, and free tool that allows
-              anyone to quickly download Instagram videos, reels, stories, and
-              IGTV content. We believe that accessing publicly shared content
-              for personal use should be simple and hassle-free.
+              anyone to quickly download videos from multiple social media
+              platforms. We believe that accessing publicly shared content for
+              personal use should be simple and hassle-free across all major
+              platforms.
             </p>
           </section>
 
@@ -82,16 +101,21 @@ const AboutPage = () => {
             </p>
             <ul>
               <li>
-                <strong>Easy-to-Use Interface:</strong> Just paste the Instagram
+                <strong>Multi-Platform Support:</strong> Download videos from
+                Instagram, YouTube, TikTok, Facebook, and Twitter all in one
+                place.
+              </li>
+              <li>
+                <strong>Easy-to-Use Interface:</strong> Just paste the video
                 link, and you're ready to go. No complicated steps.
               </li>
               <li>
-                <strong>High-Quality Downloads:</strong> Save videos and reels
-                in the best available quality.
+                <strong>High-Quality Downloads:</strong> Save videos in the best
+                available quality with multiple resolution options.
               </li>
               <li>
-                <strong>Support for Various Content Types:</strong> Download
-                videos, reels, stories, and IGTV.
+                <strong>Video Preview:</strong> Watch videos before downloading
+                to ensure it's the right content.
               </li>
               <li>
                 <strong>No Registration Required:</strong> Use our service
@@ -118,12 +142,12 @@ const AboutPage = () => {
               simplicity, speed, and user trust. We understand that you want a
               tool that just works, without intrusive ads or confusing
               processes. We are committed to maintaining a clean and efficient
-              platform.
+              platform that works across all major social media platforms.
             </p>
             <p>
               We continuously work on improving our service to ensure
-              compatibility with Instagram's updates and to enhance your
-              experience.
+              compatibility with platform updates and to enhance your experience
+              across all supported social media sites.
             </p>
           </section>
 
@@ -140,9 +164,9 @@ const AboutPage = () => {
               <li>
                 <strong>User Privacy:</strong> We aim to minimize data
                 collection. As detailed in our{" "}
-                <Link href="/privacy">Privacy Policy</Link>, we do not store
-                your downloaded content or the links you paste, beyond what's
-                necessary for the immediate download process.
+                <Link href="/privacy-policy">Privacy Policy</Link>, we do not
+                store your downloaded content or the links you paste, beyond
+                what's necessary for the immediate download process.
               </li>
               <li>
                 <strong>Transparency:</strong> We believe in being open about
@@ -161,11 +185,35 @@ const AboutPage = () => {
           </section>
 
           <section>
+            <h2>Supported Platforms</h2>
+            <p>We currently support downloading from:</p>
+            <ul>
+              <li>
+                <strong>Instagram:</strong> Videos, Reels, Stories, and IGTV
+                content
+              </li>
+              <li>
+                <strong>YouTube:</strong> Videos and Shorts
+              </li>
+              <li>
+                <strong>TikTok:</strong> Videos and Sounds
+              </li>
+              <li>
+                <strong>Facebook:</strong> Videos and Reels
+              </li>
+              <li>
+                <strong>Twitter:</strong> Videos and GIFs
+              </li>
+            </ul>
+          </section>
+
+          <section>
             <h2>Disclaimer</h2>
             <p>
-              Instagram Downloader is an independent tool and is not affiliated
-              with, endorsed, or sponsored by Instagram or Meta Platforms, Inc.
-              Instagram™ is a trademark of Meta Platforms, Inc.
+              Social Media Downloader is an independent tool and is not
+              affiliated with, endorsed, or sponsored by any social media
+              platforms. All platform names and trademarks belong to their
+              respective owners.
             </p>
           </section>
 
