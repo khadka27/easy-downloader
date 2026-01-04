@@ -22,7 +22,7 @@ const nextConfig = {
 
       // Exclude undici from client-side bundling
       config.externals = config.externals || [];
-      config.externals.push('undici');
+      config.externals.push("undici");
     }
 
     // Add Babel configuration for private class fields
@@ -33,16 +33,16 @@ const nextConfig = {
         fullySpecified: false,
       },
       use: {
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-env'],
+          presets: ["@babel/preset-env"],
           plugins: [
-            '@babel/plugin-proposal-class-properties',
-            '@babel/plugin-proposal-private-methods',
-            '@babel/plugin-proposal-private-property-in-object',
-            '@babel/plugin-transform-class-properties',
-            '@babel/plugin-transform-private-methods',
-            '@babel/plugin-transform-private-property-in-object',
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-proposal-private-methods",
+            "@babel/plugin-proposal-private-property-in-object",
+            "@babel/plugin-transform-class-properties",
+            "@babel/plugin-transform-private-methods",
+            "@babel/plugin-transform-private-property-in-object",
           ],
         },
       },
@@ -74,6 +74,7 @@ const nextConfig = {
       },
     ];
   },
+  turbopack: {},
 };
 
 module.exports = nextConfig;
