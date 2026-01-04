@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   :root {
@@ -61,7 +59,8 @@
 
 @layer base {
   * {
-    @apply border-border;
+    /* @apply border-border; */
+    border-color: hsl(var(--border));
   }
   body {
     @apply bg-background text-foreground;
@@ -100,7 +99,14 @@
 
   /* Platform-specific gradients */
   .gradient-instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
   }
 
   .gradient-youtube {
@@ -126,7 +132,9 @@
 
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .hover-glow {
@@ -155,7 +163,7 @@
   }
 
   .loading-dots::after {
-    content: '';
+    content: "";
     animation: dots 1.5s steps(5, end) infinite;
   }
 
@@ -176,7 +184,8 @@
 @layer utilities {
   /* Custom animations */
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     50% {
@@ -206,17 +215,19 @@
   }
 
   @keyframes dots {
-    0%, 20% {
-      content: '';
+    0%,
+    20% {
+      content: "";
     }
     40% {
-      content: '.';
+      content: ".";
     }
     60% {
-      content: '..';
+      content: "..";
     }
-    80%, 100% {
-      content: '...';
+    80%,
+    100% {
+      content: "...";
     }
   }
 
